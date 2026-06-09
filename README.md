@@ -188,3 +188,17 @@ The included `railway.json` uses separate commands:
 - Start command: `npm run start`
 
 If Railway dashboard has custom commands set, do not set Build and Start to the same value. Clear the dashboard overrides or use the exact values above.
+
+
+## Railway fix note
+
+Все build-инструменты (`vite`, `typescript`, `tailwindcss`, `postcss`, `autoprefixer`, `@vitejs/plugin-react`) перенесены в `dependencies`, потому что Railway иногда ставит только production-зависимости. Поэтому сборка не падает с ошибкой `tsc: not found` / `vite: not found`.
+
+В Railway должны стоять команды:
+
+```bash
+Build Command: npm run build
+Start Command: npm run start
+```
+
+Не ставь `npm install && npm run build` в Start Command и не ставь одинаковые команды в Build/Start.
